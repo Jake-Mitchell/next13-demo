@@ -1,5 +1,8 @@
 import './globals.css'
 import { Montserrat } from "@next/font/google"
+import Link from 'next/link'
+import Image from 'next/image'
+import Logo from '../app/assets/MovieBaseLogo.svg'
 
 const montserrat = Montserrat({
   weight: ['400', '700'],
@@ -16,6 +19,9 @@ export default function RootLayout({ children }) {
       */}
       <head />
       <body className={`${montserrat.className} mx-32 my-12`}>
+        <Link className="block text-2xl mb-10 cursor-pointer font-bold" href='/'>
+          <Image src={Logo} width={150} alt="go to homepage"/>
+          </Link>
         {children}
         </body>
     </html>

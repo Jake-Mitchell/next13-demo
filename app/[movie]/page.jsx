@@ -1,7 +1,12 @@
 import Image from "next/image";
 
+// This functino somehow helps fetch the details page infromation server side before it goes to the details page making it seem instant. I don't understand it as much. Look into later in nextjs docs.
 export async function generateStaticParams() {
-
+    const data = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${process.env.THE_MOVIE_DB_API_KEY}`)
+    const result = await data.json()
+    return result.results.map(movie => ({
+        movie: toString(movie.id),
+    }))
 }
 
 export default async function MovieDetail({params}) {
